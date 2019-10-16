@@ -11,6 +11,8 @@ dj-database-url = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
 gunicorn = "*"
+pillow = "*"
+django-crispy-forms = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,19 +1,26 @@
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 from django.views import generic
-
-from .models import Chat, Comment
-
-
-class ChatDetailView(generic.DetailView):
-    model = Chat
+from .models import Profile
 
 
-class CommentCreateView(generic.CreateView):
-    model = Comment
-    fields = ('text',)
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
+
+
+class ProfileCreateView(generic.CreateView):
+    model = Profile
+    template_name = 'profile_create.html'
+    success_url = reverse_lazy('chat:chat_list')
+    fields = ('bio', 'location', 'avatar',)
 
     def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        form.instance.chat_id = self.kwargs['pk']
+        form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class ProfileDetailView(generic.DetailView):
+    model = Profile
+    template_name = 'profile_detail.html'

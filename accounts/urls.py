@@ -3,9 +3,10 @@ from django.urls import path
 
 from . import views
 
-app_name = 'chats'
+app_name = 'accounts'
 
 urlpatterns = [
-    path('<int:pk>/comment/new/', views.CommentCreateView.as_view(), name='add_comment'),
-    path('<int:pk>/', views.ChatDetailView.as_view(), name='chat_detail')
+    path('<int:pk>/profile/', views.ProfileDetailView.as_view(), name="profile_detail"),
+    path('profile/', views.ProfileCreateView.as_view(), name='profile'),
+    path('signup/', views.SignUp.as_view(), name='signup'),
 ]

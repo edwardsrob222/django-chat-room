@@ -26,7 +26,7 @@ SECRET_KEY = 'yci=tq)^-xy%nssl9l=^-)4jv%vfufcj-&b5fh53e0qsxuxnm$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+
+    'crispy_forms',
+
     'accounts.apps.AccountsConfig',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,15 +82,15 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 if DEBUG:
-    DATABASE = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 else:
-    DATABASE = {
-        'default': dj_database_url.config(defualt=os.environ['DATABASE_URL']),
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ['DATABASE_URL']),
     }
 
 
@@ -127,7 +131,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.User'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDAI_ROOT = os.path.join(BASE_DIR, 'media')

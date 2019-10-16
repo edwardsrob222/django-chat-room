@@ -7,6 +7,7 @@ from .models import Chat, Comment
 
 class ChatListView(generic.ListView):
     model = Chat
+    template_name = 'chat/chat_list.html'
 
 
 class ChatDetailView(generic.DetailView):

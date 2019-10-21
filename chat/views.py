@@ -4,16 +4,17 @@ from django.views import generic
 
 from .models import Chat, Comment
 
-
+#list of chat rooms
 class ChatListView(generic.ListView):
     model = Chat
     template_name = 'chat/chat_list.html'
 
-
+#specific chat
 class ChatDetailView(generic.DetailView):
     model = Chat
+    template_name = 'chat/chat_detail.html'
 
-
+#adding comment
 class CommentCreateView(generic.CreateView):
     model = Comment
     fields = ('text',)
@@ -21,4 +22,15 @@ class CommentCreateView(generic.CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         form.instance.chat_id = self.kwargs['pk']
-        return super().form_valid(form)
+        return super(CommentCreateView, self).form_valid(form)
+
+
+#deleting comment
+class CommentDeleteView(generic.DeleteView):
+    model = Comment
+    fields = ('text',)
+
+
+# class Add_Member(request, pk):
+#     chat = get_object_or_404(Question, pk=pk)
+#     chat.instance.created_by = self.request.user

@@ -1,0 +1,13 @@
+{% extends 'chat/base.html' %}
+{% block content %}
+<h2>New Comment</h2>
+<form action="{% url 'chats:add_comment' object.id %}" method="post">
+  {% csrf_token %}
+  <input type="text" name='text'>
+  <button>Add comment</button>
+</form>
+{% for comment in object.comment_set.all %}
+<div>{{comment.text}}</div>
+<span>{{comment.created_by}}</span>
+{% endfor %}
+{% endblock content %}

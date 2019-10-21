@@ -7,6 +7,7 @@ User = get_user_model()
 
 class Chat(models.Model):
     name = models.CharField(max_length=255)
+    # member = models.ManytoManyField(User, related_name='chats')
 
     def __str__(self):
         return self.name

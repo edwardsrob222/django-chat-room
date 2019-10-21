@@ -5,10 +5,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 from .models import Profile
 from .forms import CustomUserCreationForm
 
+User = get_user_model()
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
@@ -33,6 +36,18 @@ class ProfileCreateView(generic.CreateView):
         return super().form_valid(form)
 
 
+def profile_detail(request):
+    profile_list = Profile.objects.all()
+
+    context = {
+        'profile_list': profile_list,
+    }
+
+    return render(request, 'registration/profile_detail.html', )
+
 class ProfileDetailView(generic.DetailView):
     model = Profile
-    template_name = 'profile_detail.html'
+    template_name = 'registration/profile_detail.html'
+
+    def get_object(self):
+        return get_object_or_404(User, pk=self.request.user.id)

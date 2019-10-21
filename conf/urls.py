@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name = 'chat'
+
 urlpatterns = [
     path('', include('chat.urls', namespace='chat')),
     path('accounts/', include('django.contrib.auth.urls')),

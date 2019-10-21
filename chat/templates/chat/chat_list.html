@@ -3,7 +3,7 @@
 <h1>CHAT LIST</h1>
 <ul>
 {% for chat in chat_list %}
-<li><a href="{% url 'chats:chat_detail' chat.id %}">{{chat.name}}</a></li>
+<li><a href="{% url 'chat:chat_detail' chat.id %}">{{chat.name}}</a></li>
 {% endfor %}
 </ul>
 {% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'chat/base.html '%}
+{% block content %}
+{% for profile in profile_list %}
+{% if forloop.first %}
+
+<div>{{ profile.user }}</div>
+<div>{{ profile.bio }}</div>
+<div>{{ profile.location }}</div>
+<img src="{{ profile.avatar.url }}" alt="{{ avatar.user }}">
+{% endif %}
+{% endfor %}
+{% endblock content %}

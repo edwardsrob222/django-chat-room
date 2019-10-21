@@ -13,6 +13,7 @@ class Chat(models.Model):
         return self.name
 
 
+
 class Comment(models.Model):
     text = models.TextField()
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)

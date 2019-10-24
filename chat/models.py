@@ -12,6 +12,10 @@ class Chat(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('chat:chat_list')
+
+
 
 
 class Comment(models.Model):
@@ -24,4 +28,4 @@ class Comment(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('chats:chat_detail', args=(self.chat_id,))
+        return reverse('chat:chat_detail', args=(self.chat_id,))

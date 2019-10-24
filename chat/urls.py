@@ -6,6 +6,8 @@ from . import views
 app_name = 'chat'
 
 urlpatterns = [
+    path('chat_create/new/', views.ChatCreateView.as_view(), name='chat_create'),
+
     # pk is the pk of the room you want to add the comment to
     path('<int:pk>/comment/new/', views.CommentCreateView.as_view(), name='add_comment'),
     path('<int:pk>/', views.ChatDetailView.as_view(), name='chat_detail'),

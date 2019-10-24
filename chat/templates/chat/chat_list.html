@@ -1,6 +1,7 @@
 {% extends 'chat/base.html' %}
 {% block content %}
 <h1>CHAT LIST</h1>
+<a href="{% url 'chat:chat_create' %}"><button>Create Chat</button></a>
 <ul>
 {% for chat in chat_list %}
 <li><a href="{% url 'chat:chat_detail' chat.id %}">{{chat.name}}</a></li>

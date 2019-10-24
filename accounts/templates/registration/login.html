@@ -1,7 +1,7 @@
 {% extends 'chat/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h2>Sign Up</h2>
+<h2>Login</h2>
 <form method="post">
   {% csrf_token %}
   {{ form|crispy }}

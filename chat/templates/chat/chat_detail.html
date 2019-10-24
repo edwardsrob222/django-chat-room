@@ -1,7 +1,7 @@
 {% extends 'chat/base.html' %}
 {% block content %}
 <h2>New Comment</h2>
-<form action="{% url 'chats:add_comment' object.id %}" method="post">
+<form action="{% url 'chat:add_comment' object.id %}" method="post">
   {% csrf_token %}
   <input type="text" name='text'>
   <button>Add comment</button>

@@ -15,19 +15,19 @@ User = get_user_model()
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
-    template_name = 'signup.html'
+    template_name = 'registration/signup.html'
     success_url = reverse_lazy('login')
 
 
 class LoginView(generic.CreateView):
     form_class = CustomUserCreationForm
-    template_name = 'login.html'
+    template_name = 'registration/login.html'
     success_url = reverse_lazy('chat_list')
 
 
 class ProfileCreateView(generic.CreateView):
     model = Profile
-    template_name = 'profile_create.html'
+    template_name = 'registration/profile_create.html'
     success_url = reverse_lazy('chat:chat_list')
     fields = ('bio', 'location', 'avatar',)
 
@@ -43,7 +43,7 @@ def profile_detail(request):
         'profile_list': profile_list,
     }
 
-    return render(request, 'registration/profile_detail.html', )
+    return render(request, 'registration/profile_detail.html', context)
 
 class ProfileDetailView(generic.DetailView):
     model = Profile

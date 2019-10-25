@@ -35,9 +35,3 @@ class ChatCreateView(generic.CreateView):
     model = Chat
     fields = '__all__'
     template_name = 'chat/chat_create.html'
-
-
-
-# class Add_Member(request, pk):
-#     chat = get_object_or_404(Question, pk=pk)
-#     chat.instance.created_by = self.request.user

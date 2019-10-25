@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
@@ -51,4 +50,4 @@ class ProfileDetailView(generic.DetailView):
     template_name = 'registration/profile_detail.html'
 
     def get_object(self):
-        return get_object_or_404(User, pk=self.request.user.id)
+        return get_object_or_404(Profile, user=self.request.user.id)

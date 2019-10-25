@@ -45,6 +45,7 @@ def profile_detail(request):
 
     return render(request, 'registration/profile_detail.html', context)
 
+
 class ProfileDetailView(generic.DetailView):
     model = Profile
     template_name = 'registration/profile_detail.html'
